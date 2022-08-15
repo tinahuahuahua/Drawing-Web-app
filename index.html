@@ -6,16 +6,15 @@
       <!-- <div id="test" style="height: 300px;border-width:3px;border-style:dashed;border-color:#FFAC55;padding:5px;">
         </div> -->
       <div id="colorButtonBox">
+        <div id="eraserButton" onclick="changeColorAndSize('white',100)"></div>
         <div id="colorButton" class="black" onclick='changeColorAndSize("black",10)'></div>
         <div id="colorButton" class="red" onclick="changeColorAndSize('red',10)"></div>
         <div id="colorButton" class="green" onclick="changeColorAndSize('green',10)"></div>
         <div id="colorButton" class="blue" onclick="changeColorAndSize('blue',10)"></div>
         <div id="colorButton" class="yellow" onclick="changeColorAndSize('yellow',10)"></div>
-        <div id="eraserButton" onclick="changeColorAndSize('white',100)"></div>
-
-        <div id="color1" onclick="">1</div>
-        <div id="mixcolor" onclick="">mix</div>
-        <div id="color2" onclick="">2</div>
+        <div id="color1"></div>
+        <div id="mixcolor"></div>
+        <div id="color2"></div>
       </div>
       <canvas id="canvas"></canvas>
       <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>

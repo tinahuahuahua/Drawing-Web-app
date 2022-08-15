@@ -49,32 +49,64 @@ body{
     float:left;
     margin:5px;
     border-radius:5px;
+    border: solid;
+    border-width: 2px;
+    border-color: #16243b;
     width: 40px;
     height: 40px;
     z-index: 3;
-    background:white;
+    pointer-events:none;
   }
+
+  #color1:hover {
+    transition: .1s linear;
+    width:45px;
+    height:45px;
+    margin:2.5px;
+  }
+
   #color2{
     transition: .1s linear;
     position: relative;
     float:left;
     margin:5px;
     border-radius:5px;
+    border: solid;
+    border-width: 2px;
+    border-color: #16243b;
     width: 40px;
     height: 40px;
     z-index: 3;
-    background:white;
+    pointer-events:none;
   }
+
+  #color2:hover {
+    transition: .1s linear;
+    width:45px;
+    height:45px;
+    margin:2.5px;
+  }
+
   #mixcolor{
     transition: .1s linear;
     position: relative;
     float:left;
     margin:5px;
     border-radius:5px;
+    border: solid;
+    border-width: 2px;
+    border-color: #16243b;
     width: 40px;
     height: 40px;
     z-index: 3;
-    background:white;
+    pointer-events:none;
+  }
+
+  #mixcolor:hover {
+    transition: .1s linear;
+    width:45px;
+    height:45px;
+    margin:2.5px;
   }
 
   
