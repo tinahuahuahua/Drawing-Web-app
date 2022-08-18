@@ -3,22 +3,54 @@
     <link rel="stylesheet" href="style.css">
     <script src="jquery-3.6.0.min.js"></script>
     <body>
-      <!-- <div id="test" style="height: 300px;border-width:3px;border-style:dashed;border-color:#FFAC55;padding:5px;">
-        </div> -->
       <div id="colorButtonBox">
-        <div id="eraserButton" onclick="changeColorAndSize('white',100)"></div>
-        <div id="colorButton" class="black" onclick='changeColorAndSize("black",10)'></div>
-        <div id="colorButton" class="red" onclick="changeColorAndSize('red',10)"></div>
-        <div id="colorButton" class="green" onclick="changeColorAndSize('green',10)"></div>
-        <div id="colorButton" class="blue" onclick="changeColorAndSize('blue',10)"></div>
-        <div id="colorButton" class="yellow" onclick="changeColorAndSize('yellow',10)"></div>
-        <div id="color1"></div>
-        <div id="mixcolor"></div>
-        <div id="color2"></div>
+        <div id="defaultButtonBox">
+          <div id="eraserButton" onclick="changeColorAndSize('white',100)"></div>
+          <!-- <div id="colorButton" class="black" onclick='changeColorAndSize("black",10)'></div>
+          <div id="colorButton" class="red" onclick="changeColorAndSize('red',10)"></div>
+          <div id="colorButton" class="green" onclick="changeColorAndSize('green',10)"></div>
+          <div id="colorButton" class="blue" onclick="changeColorAndSize('blue',10)"></div>
+          <div id="colorButton" class="yellow" onclick="changeColorAndSize('yellow',10)"></div> -->
+          <div id="color1"><div class="text">1</div></div>
+          <div id="mixcolor"><div class="text">MIX</div></div>
+          <div id="color2"><div class="text">2</div></div>
+       </div>
+       <div id="similarButtonBox">
+        <div id="color1Similar">
+            <div id="colorButton" class="c1-1" onclick='changeColorAndSize("black",10)'></div>
+            <div id="colorButton" class="c1-2" onclick="changeColorAndSize('red',10)">1</div>
+            <div id="colorButton" class="c1-3" onclick="changeColorAndSize('green',10)"></div>
+            <div id="colorButton" class="c1-4" onclick="changeColorAndSize('red',10)"></div>
+            <div id="colorButton" class="c1-5" onclick="changeColorAndSize('green',10)"></div>
+            <div id="colorButton" class="c1-6" onclick="changeColorAndSize('red',10)"></div>
+            <div id="colorButton" class="c1-7" onclick="changeColorAndSize('green',10)"></div>
+            <div id="colorButton" class="c1-8" onclick="changeColorAndSize('red',10)"></div>
+        </div>
+        <div id="color2Similar">
+            <div id="colorButton" class="c2-1" onclick='changeColorAndSize("black",10)'></div>
+            <div id="colorButton" class="c2-2" onclick="changeColorAndSize('red',10)">2</div>
+            <div id="colorButton" class="c2-3" onclick="changeColorAndSize('green',10)"></div>
+            <div id="colorButton" class="c2-4" onclick="changeColorAndSize('red',10)"></div>
+            <div id="colorButton" class="c2-5" onclick="changeColorAndSize('green',10)"></div>
+            <div id="colorButton" class="c2-6" onclick="changeColorAndSize('red',10)"></div>
+            <div id="colorButton" class="c2-7" onclick="changeColorAndSize('green',10)"></div>
+            <div id="colorButton" class="c2-8" onclick="changeColorAndSize('red',10)"></div>
+        </div>
+        <div id="colormixSimilar">
+            <div id="colorButton" class="cmix-1" onclick='changeColorAndSize("black",10)'></div>
+            <div id="colorButton" class="cmix-2" onclick="changeColorAndSize('red',10)">mix</div>
+            <div id="colorButton" class="cmix-3" onclick="changeColorAndSize('green',10)"></div>
+            <div id="colorButton" class="cmix-4" onclick="changeColorAndSize('red',10)"></div>
+            <div id="colorButton" class="cmix-5" onclick="changeColorAndSize('green',10)"></div>
+            <div id="colorButton" class="cmix-6" onclick="changeColorAndSize('red',10)"></div>
+            <div id="colorButton" class="cmix-7" onclick="changeColorAndSize('green',10)"></div>
+            <div id="colorButton" class="cmix-8" onclick="changeColorAndSize('red',10)"></div>
+        </div>
+       </div>
       </div>
       <canvas id="canvas"></canvas>
       <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
       <script src="main.js"></script>
       <script src="mqtt.js"></script>
-    
+
     </body>

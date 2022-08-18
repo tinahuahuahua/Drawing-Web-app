@@ -42,7 +42,6 @@ body{
     height:45px;
     margin:2.5px;
   }
-
   #color1{
     transition: .1s linear;
     position: relative;
@@ -52,18 +51,18 @@ body{
     border: solid;
     border-width: 2px;
     border-color: #16243b;
-    width: 40px;
-    height: 40px;
+    width: 90px;
+    height: 50px;
     z-index: 3;
-    pointer-events:none;
+    /* pointer-events:none; */
   }
 
-  #color1:hover {
+  /* #color1:hover {
     transition: .1s linear;
-    width:45px;
-    height:45px;
+    width:92px;
+    height:52px;
     margin:2.5px;
-  }
+  } */
 
   #color2{
     transition: .1s linear;
@@ -74,18 +73,18 @@ body{
     border: solid;
     border-width: 2px;
     border-color: #16243b;
-    width: 40px;
-    height: 40px;
+    width: 90px;
+    height: 50px;
     z-index: 3;
     pointer-events:none;
   }
 
-  #color2:hover {
+  /* #color2:hover {
     transition: .1s linear;
-    width:45px;
-    height:45px;
+    width:92px;
+    height:52px;
     margin:2.5px;
-  }
+  } */
 
   #mixcolor{
     transition: .1s linear;
@@ -96,20 +95,35 @@ body{
     border: solid;
     border-width: 2px;
     border-color: #16243b;
-    width: 40px;
-    height: 40px;
+    width: 90px;
+    height: 50px;
     z-index: 3;
-    pointer-events:none;
+    /* pointer-events:none; */
   }
 
-  #mixcolor:hover {
+  /* #mixcolor:hover {
     transition: .1s linear;
-    width:45px;
-    height:45px;
+    width:92px;
+    height:52px;
     margin:2.5px;
+  } */
+
+  #color1Similar{
+    display: none;
+    bottom:0;
+  }
+  #color2Similar{
+    display: none;
+    bottom:0;
+  }
+  #colormixSimilar{
+    display: none;
+    bottom:0;
   }
 
-  
+  .c1-1{
+    background: rgb(210,210,5);
+  }
   .black {
     background:black;
   }
@@ -124,6 +138,10 @@ body{
   }
   .yellow {
     background:yellow;
+  }
+  .text {
+    text-align:center;
+    line-height:50px;
   }
   
   
