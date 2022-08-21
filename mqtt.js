@@ -41,7 +41,6 @@ client.on('connect', () => {
   client.subscribe(topic2, { qos: 0 })
   client.subscribe(topicmix, { qos: 0 })
 //   client.publish('real_unique_topic', 'ws connection demo...!', { qos: 0, retain: false })
-
 })
 
 client.on('message', (topic, message, packet) => { //判斷哪個topic傳入的值
@@ -54,6 +53,7 @@ client.on('message', (topic, message, packet) => { //判斷哪個topic傳入的�
         $("#color1").css("background","rgb(210,210,210)");
         $("#color1").css("pointer-events","none");
         $("#color1Similar").hide();
+        $('#similarButtonBox').hide();
 
       }
       else
@@ -61,7 +61,7 @@ client.on('message', (topic, message, packet) => { //判斷哪個topic傳入的�
         console.log("print1!");
         $("#color1").css("pointer-events","all");
         $("#color1").removeAttr('onclick').attr(
-          "onclick","changeColorAndSize(\'#"+message.toString()+"\',10); showSimilarColor1();");
+          "onclick","changeColorAndSize(\'#"+message.toString()+"\'); showSimilarColor1();");
         $("#color1").css("background","#"+message.toString());
         createSimilarColor(hexToRgb(message.toString()).r, hexToRgb(message.toString()).g, hexToRgb(message.toString()).b,1);
       }
@@ -75,12 +75,14 @@ client.on('message', (topic, message, packet) => { //判斷哪個topic傳入的�
         $("#color2").css("background","rgb(210,210,210)");
         $("#color2").css("pointer-events","none");
         $("#color2Similar").hide();
+        $('#similarButtonBox').hide();
       }
-      else
+      elseonclick="changeColorAndSize('yellow')"
       {
         console.log("print2!");
         $("#color2").css("pointer-events","all");
-        $("#color2").removeAttr('onclick').attr("onclick","changeColorAndSize(\'#"+message.toString()+"\',10); showSimilarColor2();");
+        // $("#mixcolor").removeAttr('onclick').attr("onclick","changeColorAndSize(\'#"+message.toString()+"\',10); showSimilarColorMix();");
+        $("#color2").removeAttr('onclick').attr("onclick","changeColorAndSize(\'#"+message.toString()+"\'); showSimilarColor2();");
         $("#color2").css("background","#"+message.toString());
         createSimilarColor(hexToRgb(message.toString()).r, hexToRgb(message.toString()).g, hexToRgb(message.toString()).b,2);
       }
@@ -93,11 +95,13 @@ client.on('message', (topic, message, packet) => { //判斷哪個topic傳入的�
         $("#mixcolor").css("background","rgb(210,210,210)");
         $("#mixcolor").css("pointer-events","none");
         $("#colormixSimilar").hide();
+        $('#similarButtonBox').hide();
     }
     else{
         console.log("mix!");
         $("#mixcolor").css("pointer-events","all");
-        $("#mixcolor").removeAttr('onclick').attr("onclick","changeColorAndSize(\'#"+message.toString()+"\',10); showSimilarColorMix();");
+        // $("#color2").removeAttr('onclick').attr("onclick","changeColorAndSize(\'#"+message.toString()+"\'); showSimilarColor2();");
+        $("#mixcolor").removeAttr('onclick').attr("onclick","changeColorAndSize(\'#"+message.toString()+"\'); showSimilarColorMix();");
         $("#mixcolor").css("background","#"+message.toString());
         createSimilarColor(hexToRgb(message.toString()).r, hexToRgb(message.toString()).g, hexToRgb(message.toString()).b,"mix");
     }
@@ -111,18 +115,32 @@ client.on('close', () => {
 })
 
 function showSimilarColor1(){
+  $('#color1').css('border-width', '5px');
+  $('#mixcolor').css('border-width', '2px');
+  $('#color2').css('border-width', '2px');
+  $('#similarButtonBox').show();
   $("#color1Similar").show();
   $("#colormixSimilar").hide();
   $("#color2Similar").hide();
+
 }
 
 function showSimilarColorMix(){
+  $('#mixcolor').css('border-width', '5px');
+  $('#color1').css('border-width', '2px');
+  $('#color2').css('border-width', '2px');
+  $('#similarButtonBox').show();
   $("#colormixSimilar").show();
   $("#color1Similar").hide();
   $("#color2Similar").hide();
+  
 }
 
 function showSimilarColor2(){
+  $('#color2').css('border-width', '5px');
+  $('#color1').css('border-width', '2px');
+  $('#mixcolor').css('border-width', '2px');
+  $('#similarButtonBox').show();
   $("#color2Similar").show();
   $("#color1Similar").hide();
   $("#colormixSimilar").hide();
@@ -131,25 +149,42 @@ function showSimilarColor2(){
 
 function createSimilarColor(r,g,b,which){
   var i1 = 20;var i2 = 30;var i3 = 40;var i4 = 50;
+  var rplus4 = r+i4;var gplus4 = g+i4;var bplus4 = b+i4;
+  var rplus3 = r+i3;var gplus3 = g+i3;var bplus3 = b+i3;
+  var rplus2 = r+i2;var gplus2 = g+i2;var bplus2 = b+i2;
+  var rplus1 = r+i1;var gplus1 = g+i1;var bplus1 = b+i1;
+  var rminus3 = r-i3;var gminus3 = g-i3;var bminus3 = b-i3;
+  var rminus2 = r-i2;var gminus2 = g-i2;var bminus2 = b-i2;
+  var rminus1 = r-i1;var gminus1 = g-i1;var bminus1 = b-i1;
 
-  $(".c" + which +"-1").css("background","rgb("+ (r+i4) + "," + (g+i4) + ","+ (b+i4) + ")");
-  $(".c" + which +"-2").css("background","rgb("+ (r+i3) + "," + (g+i3) + ","+ (b+i3) + ")");
-  $(".c" + which +"-3").css("background","rgb("+ (r+i2) + "," + (g+i2) + ","+ (b+i2) + ")");
-  $(".c" + which +"-4").css("background","rgb("+ (r+i1) + "," + (g+i1) + ","+ (b+i1) + ")");
+  if(rminus1 < 0){ rminus1 =0; } if(gminus1 < 0){ gminus1 =0; } if(bminus1 < 0){ bminus1 =0; }
+  if(rminus2 < 0){ rminus2 =0; } if(gminus2 < 0){ gminus2 =0; } if(bminus2 < 0){ bminus2 =0; }
+  if(rminus3 < 0){ rminus3 =0; } if(gminus3 < 0){ gminus3 =0; } if(bminus3 < 0){ bminus3 =0; }
+
+  $(".c" + which +"-1").css("background","rgb("+ (rplus4) + "," + (gplus4) + ","+ (bplus4) + ")");
+  $(".c" + which +"-2").css("background","rgb("+ (rplus3) + "," + (gplus3) + ","+ (bplus3) + ")");
+  $(".c" + which +"-3").css("background","rgb("+ (rplus2) + "," + (gplus2) + ","+ (bplus2) + ")");
+  $(".c" + which +"-4").css("background","rgb("+ (rplus1) + "," + (gplus1) + ","+ (bplus1) + ")");
   $(".c" + which +"-5").css("background","rgb("+ (r) + "," + (g) + ","+ (b) + ")");
-  $(".c" + which +"-6").css("background","rgb("+ (r-i1) + "," + (g-i1) + ","+ (b-i1) + ")");
-  $(".c" + which +"-7").css("background","rgb("+ (r-i2) + "," + (g-i2) + ","+ (b-i2) + ")");
-  $(".c" + which +"-8").css("background","rgb("+ (r-i3) + "," + (g-i3) + ","+ (b-i3) + ")");
-  $(".c" + which +"-1").removeAttr('onclick').attr("onclick","changeColorAndSize(rgbToHex(" + (r+i4) + "," + (g+i4) + "," + (b+i4)+"),10);");
-  $(".c" + which +"-2").removeAttr('onclick').attr("onclick","changeColorAndSize(rgbToHex(" + (r+i3) + "," + (g+i3) + "," + (b+i3)+"),10);");
-  $(".c" + which +"-3").removeAttr('onclick').attr("onclick","changeColorAndSize(rgbToHex(" + (r+i2) + "," + (g+i2) + "," + (b+i2)+"),10);");
-  $(".c" + which +"-4").removeAttr('onclick').attr("onclick","changeColorAndSize(rgbToHex(" + (r+i1) + "," + (g+i1) + "," + (b+i1)+"),10);");
-  $(".c" + which +"-5").removeAttr('onclick').attr("onclick","changeColorAndSize(rgbToHex(" + (r) + "," + (g) + "," + (b)+"),10);");
-  $(".c" + which +"-6").removeAttr('onclick').attr("onclick","changeColorAndSize(rgbToHex(" + (r-i1) + "," + (g-i1) + "," + (b-i1)+"),10);");
-  $(".c" + which +"-7").removeAttr('onclick').attr("onclick","changeColorAndSize(rgbToHex(" + (r-i2) + "," + (g-i2) + "," + (b-i2)+"),10);");
-  $(".c" + which +"-8").removeAttr('onclick').attr("onclick","changeColorAndSize(rgbToHex(" + (r-i3) + "," + (g-i3) + "," + (b-i3)+"),10);");
+  $(".c" + which +"-6").css("background","rgb("+ (rminus1) + "," + (gminus1) + ","+ (bminus1) + ")");
+  $(".c" + which +"-7").css("background","rgb("+ (rminus2) + "," + (gminus2) + ","+ (bminus2) + ")");
+  $(".c" + which +"-8").css("background","rgb("+ (rminus3) + "," + (gminus3) + ","+ (bminus3) + ")");
+  $(".c" + which +"-1").removeAttr('onclick').attr("onclick","changeColorAndSize(rgbToHex(" + (rplus4) + "," + (gplus4) + "," + (bplus4)+"));");
+  $(".c" + which +"-2").removeAttr('onclick').attr("onclick","changeColorAndSize(rgbToHex(" + (rplus3) + "," + (gplus3) + "," + (bplus3)+"));");
+  $(".c" + which +"-3").removeAttr('onclick').attr("onclick","changeColorAndSize(rgbToHex(" + (rplus2) + "," + (gplus2) + "," + (bplus2)+"));");
+  $(".c" + which +"-4").removeAttr('onclick').attr("onclick","changeColorAndSize(rgbToHex(" + (rplus1) + "," + (gplus1) + "," + (bplus1)+"));");
+  $(".c" + which +"-5").removeAttr('onclick').attr("onclick","changeColorAndSize(rgbToHex(" + (r) + "," + (g) + "," + (b)+"));");
+  $(".c" + which +"-6").removeAttr('onclick').attr("onclick","changeColorAndSize(rgbToHex(" + (rminus1) + "," + (gminus1) + "," + (bminus1)+"));");
+  $(".c" + which +"-7").removeAttr('onclick').attr("onclick","changeColorAndSize(rgbToHex(" + (rminus2) + "," + (gminus2) + "," + (bminus2)+"));");
+  $(".c" + which +"-8").removeAttr('onclick').attr("onclick","changeColorAndSize(rgbToHex(" + (rminus3) + "," + (gminus3) + "," + (bminus3)+"));");
   
 }
+// $("#canvas").click(function(){
+//   $("#color1Similar").hide();
+//   $("#color2Similar").hide();
+//   $("#colormixSimilar").hide();
+//   alert("OAO");
+// });
 
 function hexToRgb(hex) {
   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -160,14 +195,6 @@ function hexToRgb(hex) {
   } : null;
 }
 
-// alert(hexToRgb("#0033ff").g);
-
-// $("#canvas").click(function(){
-//   $("#color1Similar").hide();
-//   $("#color2Similar").hide();
-//   $("#colormixSimilar").hide();
-// });
-
 function componentToHex(c) {
   var hex = c.toString(16);
   return hex.length == 1 ? "0" + hex : hex;
@@ -177,6 +204,7 @@ function rgbToHex(r, g, b) {
   return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
 
-// alert(rgbToHex(0, 51, 255)); // #0033ff
+
+
  
 

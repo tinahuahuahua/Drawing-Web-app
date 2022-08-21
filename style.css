@@ -1,15 +1,50 @@
 body{
     margin:0;
     padding:0;
+    
   }
   #colorButtonBox{
     position:absolute;
     background:rgb(210,210,210);
     padding:5px;
     margin:5px;
+    height: 65px;
     border-radius:10px;
     bottom:0;
   }
+  #strokeControl{
+    position:absolute;
+    background:rgb(210,210,210);
+    padding:5px;
+    margin:5px;
+    border-radius:10px;
+    height: 50px;
+    top: 70px;;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+  }
+  #similarButtonBox{
+    position:absolute;
+    background:rgb(210,210,210);
+    padding:10px;
+    /* margin:5px; */
+    height: 100px;
+    width: 200px;
+    border-radius:10px;
+    bottom: 90px;
+    display: none;
+  }
+  #colorButtonBoxDefault{
+    position:absolute;
+    background:rgb(210,210,210);
+    padding:5px;
+    margin:5px;
+    border-radius:10px;
+    top:0;
+    user-select: none;
+  }
+
   #colorButton {
     transition: .1s linear;
     position: relative;
@@ -19,6 +54,22 @@ body{
     width: 40px;
     height: 40px;
     z-index: 3;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+  }
+  .colorButton {
+    transition: .1s linear;
+    position: relative;
+    float:left;
+    margin:5px;
+    border-radius:5px;
+    width: 40px;
+    height: 40px;
+    z-index: 3;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
   }
   #eraserButton {
     transition: .1s linear;
@@ -36,12 +87,13 @@ body{
     height:30px;
     margin:10px;
   }
-  #colorButton:hover {
+  /* #colorButton:hover {
     transition: .1s linear;
     width:45px;
     height:45px;
     margin:2.5px;
-  }
+  } */
+
   #color1{
     transition: .1s linear;
     position: relative;
@@ -51,7 +103,7 @@ body{
     border: solid;
     border-width: 2px;
     border-color: #16243b;
-    width: 90px;
+    width: 100px;
     height: 50px;
     z-index: 3;
     /* pointer-events:none; */
@@ -73,18 +125,11 @@ body{
     border: solid;
     border-width: 2px;
     border-color: #16243b;
-    width: 90px;
+    width: 100px;
     height: 50px;
     z-index: 3;
     pointer-events:none;
   }
-
-  /* #color2:hover {
-    transition: .1s linear;
-    width:92px;
-    height:52px;
-    margin:2.5px;
-  } */
 
   #mixcolor{
     transition: .1s linear;
@@ -95,11 +140,12 @@ body{
     border: solid;
     border-width: 2px;
     border-color: #16243b;
-    width: 90px;
+    width: 100px;
     height: 50px;
     z-index: 3;
     /* pointer-events:none; */
   }
+
 
   /* #mixcolor:hover {
     transition: .1s linear;
@@ -120,6 +166,43 @@ body{
     display: none;
     bottom:0;
   }
+
+  #stroke5{
+    width: 5px;
+    height: 5px;
+    border-radius: 100%;
+    background: black;
+    /* border: solid; */
+  }
+  #stroke10{
+    width: 10px;
+    height:10px;
+    border-radius: 100%;
+    /* border: solid; */
+    background: black;
+  }
+  #stroke15{
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    /* border: solid; */
+    background: black;
+  }
+  #stroke20{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    /* border: solid; */
+    background: black;
+  }
+  #stroke25{
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    /* border: solid; */
+    background: black;
+  }
+
 
   .c1-1{
     background: rgb(210,210,5);
@@ -143,5 +226,6 @@ body{
     text-align:center;
     line-height:50px;
   }
+
   
   
